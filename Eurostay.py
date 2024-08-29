@@ -55,14 +55,14 @@ st.markdown("""
 # Load datasets
 @st.cache_data
 def load_data():
-    europe_data = pd.read_csv("C:/Users/parvi/OneDrive/Desktop/My project/Streamlit/data/europe_data.csv")
-    europe_data_processed = pd.read_csv("C:/Users/parvi/OneDrive/Desktop/My project/Streamlit/data/europe_data_processed.csv")
+    europe_data = pd.read_csv("data/europe_data.csv")
+    europe_data_processed = pd.read_csv("data/europe_data_processed.csv")
     return europe_data, europe_data_processed
 
 europe_data, europe_data_processed = load_data()
 
 # Display logo
-logo_path = Path("C:/Users/parvi/OneDrive/Desktop/My project/Streamlit/data/logo Eurostay.png")
+logo_path = Path("data/logo Eurostay.png")
 st.image(str(logo_path), width=200)
 
 st.title("EuroStay Property Recommendation")
