@@ -1,0 +1,73 @@
+body {
+    color: #FFFFFF;
+    
+}
+
+.stApp {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.title {
+    color: #FFD700;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.subtitle {
+    color: #1b1919;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stSelectbox > div > div {
+    background-color: #25272a;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.stButton > button {
+    background-color: #FFD700;
+    color: #18191b;
+    font-weight: bold;
+    padding: 0.20rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    background-color: #FFA500;
+    color: #FFFFFF;
+}
+
+.movie-recommendation {
+    
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.movie-title {
+    color: #FFD700;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1E2632;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+}
