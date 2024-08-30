@@ -80,6 +80,9 @@ price_category = st.sidebar.selectbox("💰 Price Category", europe_data['price_
 max_distance = st.sidebar.slider("🚶‍♂️ Maximum Distance from Center (km)", 0.0, 10.0, 5.0, 0.1)
 max_metro_distance = st.sidebar.slider("🚇 Maximum Distance from Metro (km)", 0.0, 5.0, 1.0, 0.1)
 
+# New filter for week time
+week_time = st.sidebar.selectbox("📅 Week Time", ["Any", "Weekdays", "Weekends"])
+
 # Recommendation system
 if st.sidebar.button("🔍 Find Properties"):
     # Filter data by selected city
@@ -93,8 +96,16 @@ if st.sidebar.button("🔍 Find Properties"):
     distance_mask = city_filtered_df['dist'] <= max_distance
     metro_mask = city_filtered_df['metro_dist'] <= max_metro_distance
 
+    # Apply week time filter
+    if week_time == "Weekdays":
+        week_time_mask = city_filtered_df['week time_weekdays'] == 1
+    elif week_time == "Weekends":
+        week_time_mask = city_filtered_df['week time_weekends'] == 1
+    else:
+        week_time_mask = pd.Series([True] * len(city_filtered_df))
+
     # Combine all filters
-    final_mask = room_type_mask & person_capacity_mask & price_category_mask & distance_mask & metro_mask
+    final_mask = room_type_mask & person_capacity_mask & price_category_mask & distance_mask & metro_mask & week_time_mask
     filtered_df = city_filtered_df[final_mask]
 
     if filtered_df.empty:
