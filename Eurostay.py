@@ -85,8 +85,6 @@ week_time = st.sidebar.selectbox("📅 Week Time", ["Any", "Weekdays", "Weekends
 
 # New filters
 superhost_only = st.sidebar.checkbox("🌟 Superhost properties only")
-min_attr_index = st.sidebar.slider("🏛️ Minimum Attraction Index", 0.0, 1.0, 0.5, 0.01)
-min_rest_index = st.sidebar.slider("🍽️ Minimum Restaurant Index", 0.0, 1.0, 0.5, 0.01)
 
 # Bedroom filter
 if 'bedrooms' in europe_data.columns:
@@ -122,8 +120,7 @@ if st.sidebar.button("🔍 Find Properties"):
     else:
         superhost_mask = pd.Series([True] * len(city_filtered_df))
     
-    attr_index_mask = city_filtered_df['attr_index_norm'] >= min_attr_index
-    rest_index_mask = city_filtered_df['rest_index_norm'] >= min_rest_index
+    
 
     # Apply bedroom filter if the column exists
     if min_bedrooms is not None and 'bedrooms' in city_filtered_df.columns:
@@ -134,7 +131,7 @@ if st.sidebar.button("🔍 Find Properties"):
     # Combine all filters
     final_mask = (room_type_mask & person_capacity_mask & price_category_mask & 
                   distance_mask & metro_mask & week_time_mask & superhost_mask & 
-                  attr_index_mask & rest_index_mask & bedroom_mask)
+                  bedroom_mask)
     filtered_df = city_filtered_df[final_mask]
 
     if filtered_df.empty:
@@ -170,8 +167,7 @@ if st.sidebar.button("🔍 Find Properties"):
              st.write(f"Guest Satisfaction: {property['guest_satisfaction_overall']:.1f}/100")
              st.write(f"Distance from Center: {property['dist']:.2f} km")
              st.write(f"Distance from Metro: {property['metro_dist']:.2f} km")
-             st.write(f"Attraction Index: {property['attr_index_norm']:.2f}")
-             st.write(f"Restaurant Index: {property['rest_index_norm']:.2f}")
+            
              st.write(f"Superhost: {'Yes' if property['host_is_superhost'] else 'No'}")
              if 'bedrooms' in property:
                     st.write(f"Bedrooms: {property['bedrooms']}")
